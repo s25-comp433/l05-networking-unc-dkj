@@ -1,7 +1,7 @@
 //
 //  ContentView.swift
 //  iTunesSearch
-//
+//  added comment to push formatting
 //  Created by Samuel Shi on 2/27/25.
 //
 
@@ -21,7 +21,6 @@ struct Score: Codable {
     let opponent: Int
 }
 
-
 struct ContentView: View {
     @State private var games = [Game]()
     
@@ -29,24 +28,24 @@ struct ContentView: View {
         ZStack {
             Color(UIColor.systemGray6)
                 .ignoresSafeArea()
-            VStack(alignment: .leading, spacing:0){
+            VStack(alignment: .leading, spacing: 0) {
                 Text("UNC Basketball")
                     .font(.largeTitle)
                     .bold()
                     .padding(.leading)
                     .padding(.top)
                     .padding(.bottom, 0)
-                ZStack{
+                ZStack {
                     List(games, id: \.id) { item in
                         VStack(alignment: .leading) {
-                            HStack{
+                            HStack {
                                 Text("\(item.team) vs \(item.opponent)")
                                     .font(.headline)
                                 Spacer()
                                 Text("\(item.score.unc) - \(item.score.opponent)")
                                     .font(.headline)
                             }
-                            HStack{
+                            HStack {
                                 Text("\(item.date)")
                                     .font(.caption2)
                                     .foregroundStyle(.gray)
@@ -63,6 +62,7 @@ struct ContentView: View {
             }
         }
     }
+
     func loadData() async {
         guard let url = URL(string: "https://api.samuelshi.com/uncbasketball") else {
             print("Invalid URL")
